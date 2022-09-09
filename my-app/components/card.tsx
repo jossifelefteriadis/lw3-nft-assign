@@ -1,22 +1,23 @@
-export default function Card(prop) {
-  console.log("props 1", prop.uri);
-  console.log("props 2", prop.uri.token_uri.toString());
-  //   const uri = prop.uri.token_uri;
-  const fixUrl = (uri) => {
-    // prop.uri.token_uri.includes('https://ipfs')
+import type { AppProps } from "next/app";
+import { useState } from "react";
+import styles from "../styles/Card.module.css";
 
-    return `https://ipfs.moralis.io:2053/ipfs${uri
-      .split("ipfs://ipfs/")
-      .slice(-1, [0])}`;
-  };
-
-  const fixedUri = fixUrl(prop.uri.token_uri);
+export default function Card(props: AppProps) {
+  const [nft, setNft] = useState(JSON.parse(props.uri.metadata))
+  const [nftImage, setNftImage] = useState(nft.image.split("ipfs://")[1])
 
   return (
-    <section>
-      {console.log("its fixed", fixedUri)}
-      <p>{fixedUri}</p>
-      <p>hej</p>
+    <section className={styles.cardContainer}>
+      {nft.name ? (
+        <h1>{nft.name}</h1>
+      ) : (
+        <h1>No NFT title can be shown.</h1>
+      )}
+      {nftImage ? (
+        <img src={`https://ipfs.io/ipfs/${nftImage}`} />
+      ) : (
+        <p>No NFT image can be shown.</p>
+      )}
     </section>
   );
 }

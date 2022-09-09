@@ -8,7 +8,7 @@ import LoggedIn from "../components/loggedIn";
 
 export default function Home() {
   const { isConnected } = useAccount();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
   useEffect(() => {
     if (!isConnected) {
@@ -17,6 +17,7 @@ export default function Home() {
       setIsLoggedIn(false);
     }
   }, [isConnected]);
+  
   return (
     <section className={styles.container}>
       <Nav />
