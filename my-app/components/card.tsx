@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "../styles/Card.module.css";
 
-export default function Card(props) {
+export default function Card(props: any) {
   const [nft, setNft] = useState(JSON.parse(props.uri.metadata))
   const [nftImage, setNftImage] = useState(nft.image.split("ipfs://")[1])
 
