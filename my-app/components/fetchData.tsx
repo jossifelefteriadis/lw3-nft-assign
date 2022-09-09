@@ -30,7 +30,7 @@ export default function FetchData() {
     <section>
       {data.map(nft => {
         return (
-          <Card uri={nft} />
+          <Card uri={nft} key={nft.block_number_minted} />
         )
       })}
     </section>
