@@ -12,9 +12,13 @@ import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 
+type alchemyProvider = {
+  alchemyId: string;
+}
+
 const { chains, provider } = configureChains(
   [chain.mainnet, chain.polygon, chain.goerli],
-  [alchemyProvider({ alchemyId: process.env.ALCHEMY_ID }), publicProvider()]
+  [alchemyProvider({ apiKey: process.env.ALCHEMY_ID }), publicProvider()]
 );
 
 const { connectors } = getDefaultWallets({
