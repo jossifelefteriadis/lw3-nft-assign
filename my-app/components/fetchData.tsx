@@ -4,7 +4,7 @@ import Card from "./card";
 
 export default function FetchData() {
   const { address } = useAccount();
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<any[]>([]);
 
     const options = {
       method: "GET",
