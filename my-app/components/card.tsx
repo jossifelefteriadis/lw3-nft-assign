@@ -7,7 +7,7 @@ export default function Card(props: any) {
 
   return (
     <section className={styles.cardContainer}>
-      {nft.name ? (
+      {nft?.name ? (
         <h1>{nft.name}</h1>
       ) : (
         <h1>No NFT title can be shown.</h1>
